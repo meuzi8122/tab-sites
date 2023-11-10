@@ -4,7 +4,12 @@ export default {
     "./src/**/*.{html,js,svelte,ts}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        "w-content-side-smartphone": "16px",
+        "w-content-side": "calc((100% - 960px) / 2)",
+      },
+    },
   },
   plugins: [
     require("daisyui")
