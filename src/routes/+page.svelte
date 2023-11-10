@@ -1,6 +1,15 @@
 <script lang="ts">
 
+import Accordion from "$lib/components/accordion.svelte";
+
 export let data: import("./$types").PageData;
+
+let selectedSiteId: string | null = null;
+
+/* TODO: 型確認 */
+function onSiteSelected(event: any) {
+    selectedSiteId = event.currentTarget.value;
+}
 
 </script>
 
@@ -8,14 +17,8 @@ export let data: import("./$types").PageData;
     <title>tabs</title>
 </svelte:head>
 
-{#each data.sites as site}
-    <div class="collapse bg-base-200">
-        <input type="radio" name="my-accordion-1" checked={true} />
-        <div class="collapse-title text-xl font-medium">
-            {site.name}
-        </div>
-        <div class="collapse-content">
-            <a href={site.url} target="_blank" rel="noopener noreferrer">link</a>
-        </div>
-    </div>
-{/each}
+<div class="join join-vertical w-full">
+    {#each data.sites as site}
+        <Accordion site={site} name="sites" isSelected={site.id == selectedSiteId} onChange={onSiteSelected}></Accordion>
+    {/each}
+</div>
