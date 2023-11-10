@@ -14,10 +14,10 @@ function onSiteSelected(event: any) {
 </script>
 
 <svelte:head>
-    <title>tabs</title>
+    <title>Guitar tabs and chords</title>
 </svelte:head>
 
-<div class="w-content-side-smartphone md:w-content-side mt-4">
+<div class="px-w-content-side-smartphone md:px-w-content-side mt-8">
   <div class="join join-vertical w-full">
     {#each data.sites as site}
         <Accordion site={site} name="sites" isSelected={site.id == selectedSiteId} onChange={onSiteSelected}></Accordion>
